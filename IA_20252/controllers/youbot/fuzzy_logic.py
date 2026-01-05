@@ -5,7 +5,7 @@ def trapezoidal(x, a, b, c, d):
             return 1.0
     elif a < x < b:
          return (x - a) / (b - a)
-    else:  # c < x < d
+    else:  
             return (d - x) / (d - c)
 
 

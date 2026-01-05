@@ -248,12 +248,9 @@ class Arm:
         return 0.0
     
     def inverse_kinematics(self, x, y, z):
-        # ----------------------------
-        # LIMITES FÍSICOS IMPORTANTES
-        # ----------------------------
         x = max(-0.35, min(0.35, x))
-        y = max(0.18, min(0.45, y))   # MUITO IMPORTANTE
-        z = max(0.02, min(0.25, z))   # evita bater no chão
+        y = max(0.18, min(0.45, y))   
+        z = max(0.02, min(0.25, z))   
 
         y1 = math.sqrt(x * x + y * y)
         z1 = z + self.get_sub_arm_length(3) + self.get_sub_arm_length(4) - self.get_sub_arm_length(0)
@@ -262,7 +259,6 @@ class Arm:
         b = self.get_sub_arm_length(2)
         c = math.sqrt(y1 * y1 + z1 * z1)
 
-        # 🔴 posição inalcançável → não mexe no braço
         if c > (a + b) or c < abs(a - b):
             return False
 
